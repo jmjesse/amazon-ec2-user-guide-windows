@@ -45,6 +45,7 @@ Amazon's trademarks and trade dress may not be used in
       + [Recover AMIs from the Recycle Bin](recycle-bin-working-with-amis.md)
       + [Automate the EBS-backed AMI lifecycle](automating-amis.md)
    + [Use encryption with EBS-backed AMIs](AMIEncryption.md)
+   + [Monitor AMI events using Amazon EventBridge](monitor-ami-events.md)
    + [Understand AMI billing information](ami-billing-info.md)
       + [AMI billing information fields](billing-info-fields.md)
       + [Finding AMI billing and usage details](view-billing-info.md)
