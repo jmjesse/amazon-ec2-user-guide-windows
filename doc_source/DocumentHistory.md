@@ -4,6 +4,8 @@ The following table describes important additions to the Amazon EC2 documentatio
 
 | Change | Description | Date | 
 | --- |--- |--- |
+| [UEFI Secure Boot](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/uefi-secure-boot.html) | UEFI Secure Boot builds on the long\-standing secure boot process of Amazon EC2 and provides additional defense\-in\-depth that helps customers secure software from threats that persist across reboots\. | May 10, 2022 | 
+| [NitroTPM](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/nitrotpm.html) | Nitro Trusted Platform Module \(NitroTPM\) is a virtual device that is provided by the AWS Nitro System and conforms to the TPM 2\.0 specification\. | May 10, 2022 | 
 | [AMI state change events](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/monitor-ami-events.html) | Amazon EC2 now generates an event when an AMI changes state\. You can use Amazon EventBridge to detect and react to these events\. | May 9, 2022 | 
 | [Describe public keys](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/describe-keys.html) | You can query the public key and creation date of an Amazon EC2 key pair\. | April 28, 2022 | 
 | [Create key pairs](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/create-key-pairs.html#having-ec2-create-your-key-pair) | You can specify the key format \(PEM or PPK\) when creating a new key pair\. | April 28, 2022 | 
