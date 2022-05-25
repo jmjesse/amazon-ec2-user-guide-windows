@@ -61,7 +61,7 @@ P2 instances support NVIDIA GPUDirect peer to peer transfers\. For more informat
 
 ## Hardware specifications<a name="gpu-instance-specifications"></a>
 
-The following is a summary of the hardware specifications for accelerated computing instances\.
+The following is a summary of the hardware specifications for accelerated computing instances\. A virtual central processing unit \(vCPU\) represents a portion of the physical CPU assigned to a virtual machine \(VM\)\. For x86 instances, there are two vCPUs per core\. For Graviton instances, there is one vCPU per core\.
 
 
 | Instance type | Default vCPUs | Memory \(GiB\) | Accelerators | 
@@ -103,9 +103,18 @@ The following is a summary of the hardware specifications for accelerated comput
 | p3\.16xlarge | 64 | 488 | 8 | 
 | p3dn\.24xlarge | 96 | 768 | 8 | 
 
-For more information about the hardware specifications for each Amazon EC2 instance type, see [Amazon EC2 Instance Types](https://aws.amazon.com/ec2/instance-types/)\.
+The accelerated computing instances use the following processors\.
 
-For more information about specifying CPU options, see [Optimize CPU options](instance-optimize-cpu.md)\.
+**AMD processors**
++ **2nd generation AMD EPYC processors \(AMD EPYC 7R32\)**: G4ad, G5
+
+**Intel processors**
++ **Intel Xeon Scalable processors \(Broadwell E5\-2686 v4\)**: F1, G3, P2, P3
++ **Intel Xeon Scalable processors \(Skylake 8175\)**: P3dn
++ **2nd generation Intel Xeon Scalable processors \(Cascade Lake P\-8259CL\)**: VT1
++ **2nd generation Intel Xeon Scalable processors \(Cascade Lake P\-8259L\)**: G4dn
+
+For more information, see [Amazon EC2 Instance Types](https://aws.amazon.com/ec2/instance-types/)\.
 
 ## Instance performance<a name="gpu-instance-performance"></a>
 

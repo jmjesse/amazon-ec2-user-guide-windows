@@ -83,7 +83,7 @@ For more information, see [Amazon EC2 z1d Instances](https://aws.amazon.com/ec2/
 
 ## Hardware specifications<a name="memory-instances-hardware"></a>
 
-The following is a summary of the hardware specifications for memory optimized instances\.
+The following is a summary of the hardware specifications for memory optimized instances\. A virtual central processing unit \(vCPU\) represents a portion of the physical CPU assigned to a virtual machine \(VM\)\. For x86 instances, there are two vCPUs per core\. For Graviton instances, there is one vCPU per core\.
 
 
 | Instance type | Default vCPUs | Memory \(GiB\) | 
@@ -211,9 +211,21 @@ The following is a summary of the hardware specifications for memory optimized i
 
 \* Each logical processor is a hyperthread on 224 cores\.
 
-For more information about the hardware specifications for each Amazon EC2 instance type, see [Amazon EC2 Instance Types](https://aws.amazon.com/ec2/instance-types/)\.
+The memory optimized instances use the following processors\.
 
-For more information about specifying CPU options, see [Optimize CPU options](instance-optimize-cpu.md)\.
+**AMD processors**
++ **AMD EPYC 7000 series processors \(AMD EPYC 7571\)**: R5a, R5ad
+
+**Intel processors**
++ **Intel Xeon Scalable processors \(Haswell E7\-8880 v3\)**: X1, X1e
++ **Intel Xeon Scalable processors \(Broadwell E5\-2686 v4\)**: R4
++ **Intel Xeon Scalable processors \(Skylake 8151\)**: z1d
++ **Intel Xeon Scalable processors \(Skylake 8175M or Cascade Lake 8259CL\)**: R5, R5d
++ **2nd generation Intel Xeon Scalable processors \(Cascade Lake 8259CL\)**: R5b, R5n
++ **2nd generation Intel Xeon Scalable processors \(Cascade Lake 8252C\)**: X2iezn
++ **3rd generation Intel Xeon Scalable processors \(Ice Lake 8375C\)**: R6i, X2idn, X2iedn
+
+For more information, see [Amazon EC2 Instance Types](https://aws.amazon.com/ec2/instance-types/)\.
 
 ## Memory performance<a name="memory-perf"></a>
 
@@ -392,7 +404,7 @@ The following is a summary of features for memory optimized instances\.
 | X1e | No | No | SSD \* | Yes | 
 | z1d | No | Yes | NVME \* | Yes | 
 
-**\*\*** All `io2` volumes attached to R5b, X2idn, and X2iedn instances, during or after launch, automatically run on EBS Block Express\. For more information, see [io2 Block Express volumes](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html#io2-block-express)\.
+**\*\*** All `io2` volumes attached to R5b, X2idn, X2iedn, and C7g instances, during or after launch, automatically run on EBS Block Express\. For more information, see [io2 Block Express volumes](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html#io2-block-express)\.
 
 **\*** The root device volume must be an Amazon EBS volume\.
 
@@ -427,13 +439,6 @@ The following AMIs support launching memory optimized instances:
 + Windows Server 2008 SP2 64\-bit
 
 ## Release notes<a name="memory-instance-limits"></a>
-+ R4 instances feature up to 64 vCPUs and are powered by two AWS\-customized Intel XEON processors based on E5\-2686v4 that feature high\-memory bandwidth and larger L3 caches to boost the performance of in\-memory applications\.
-+ R5, R5b, and R5d instances feature a 3\.1 GHz Intel Xeon Platinum 8000 series processor from either the first generation \(Skylake\-SP\) or second generation \(Cascade Lake\)\.
-+ R5a and R5ad instances feature a 2\.5 GHz AMD EPYC 7000 series processor\.
-+ High memory instances \(`u-6tb1.metal`, `u-9tb1.metal`, and `u-12tb1.metal`\) are the first instances to be powered by an eight\-socket platform with the latest generation Intel Xeon Platinum 8176M \(Skylake\) processors that are optimized for mission\-critical enterprise workloads\. High Memory instances with 18 TB and 24 TB of memory \(`u-18tb1.metal` and `u-24tb1.metal`\) are the first instances powered by an 8\-socket platform with 2nd Generation Intel Xeon Scalable 8280L \(Cascade Lake\) processors\.
-+ X1e and X1 instances feature up to 128 vCPUs and are powered by four Intel Xeon E7\-8880 v3 processors that feature high\-memory bandwidth and larger L3 caches to boost the performance of in\-memory applications\.
-+ X2idn and X2iedn instances feature Intel Xeon Scalable processors \(Ice Lake\)\. They are certified by SAP for running Business Suite on HANA, SAP S/4HANA, Data Mart Solutions on HANA, Business Warehouse on HANA, SAP BW/4HANA, and SAP NetWeaver workloads with anyDB in production environments\. For more information, see [Certified and Supported SAP HANA Hardware](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/#/solutions?filters=v:deCertified;ve:23)\.
-+ X2iezn instances feature a custom Intel Xeon Scalable processor \(Cascade Lake\)\.
 + Instances built on the Nitro System have the following requirements:
   + [NVMe drivers](nvme-ebs-volumes.md) must be installed
   + [Elastic Network Adapter \(ENA\) drivers](enhanced-networking-ena.md) must be installed
@@ -442,7 +447,7 @@ The following AMIs support launching memory optimized instances:
 + To get the best performance from your R6i instances, ensure that they have ENA driver version 2\.2\.3 or later\. Using an ENA driver earlier than version 2\.0\.0 with these instances causes network interface attachment failures\. The following AMIs have a compatible ENA driver\.
   + AWS Windows AMI from May 2021 or later
 + Instances built on the Nitro System instances support a maximum of 28 attachments, including network interfaces, EBS volumes, and NVMe instance store volumes\. For more information, see [Nitro System volume limits](volume_limits.md#instance-type-volume-limits)\.
-+ All `io2` volumes attached to R5b, X2idn, and X2iedn instances, during or after launch, automatically run on EBS Block Express\. For more information, see [`io2` Block Express volumes](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html#io2-block-express)\.
++ All `io2` volumes attached to R5b, X2idn, X2iedn, and C7g instances, during or after launch, automatically run on EBS Block Express\. For more information, see [`io2` Block Express volumes](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html#io2-block-express)\.
 + Launching a bare metal instance boots the underlying server, which includes verifying all hardware and firmware components\. This means that it can take 20 minutes from the time the instance enters the running state until it becomes available over the network\.
 + To attach or detach EBS volumes or secondary network interfaces from a bare metal instance requires PCIe native hotplug support\.
 + Bare metal instances use a PCI\-based serial device rather than an I/O port\-based serial device\. The upstream Linux kernel and the latest Amazon Linux AMIs support this device\. Bare metal instances also provide an ACPI SPCR table to enable the system to automatically use the PCI\-based serial device\. The latest Windows AMIs automatically use the PCI\-based serial device\.

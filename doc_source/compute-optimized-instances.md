@@ -39,7 +39,7 @@ For more information, see [Amazon EC2 C6i Instances](http://aws.amazon.com/ec2/i
 
 ## Hardware specifications<a name="compute-instances-hardware"></a>
 
-The following is a summary of the hardware specifications for compute optimized instances\.
+The following is a summary of the hardware specifications for compute optimized instances\. A virtual central processing unit \(vCPU\) represents a portion of the physical CPU assigned to a virtual machine \(VM\)\. For x86 instances, there are two vCPUs per core\. For Graviton instances, there is one vCPU per core\.
 
 
 | Instance type | Default vCPUs | Memory \(GiB\) | 
@@ -112,9 +112,20 @@ The following is a summary of the hardware specifications for compute optimized 
 | c6i\.32xlarge | 128 | 256 | 
 | c6i\.metal | 128 | 256 | 
 
-For more information about the hardware specifications for each Amazon EC2 instance type, see [Amazon EC2 Instance Types](https://aws.amazon.com/ec2/instance-types/)\.
+The compute optimized instances use the following processors\.
 
-For more information about specifying CPU options, see [Optimize CPU options](instance-optimize-cpu.md)\.
+**AMD processors**
++ **2nd generation AMD EPYC processors \(AMD EPYC 7R32\)**: C5a, C5ad
++ **3rd generation AMD EPYC processors \(AMD EPYC 7R13\)**: C6a
+
+**Intel processors**
++ **Intel Xeon Scalable processors \(Haswell E5\-2666 v3\)**: C4
++ **Intel Xeon Scalable processors \(Skylake 8124\)**: C5n
++ **Intel Xeon Scalable processors \(Skylake 8124M or Cascade Lake 8223CL\)**: Smaller C5 and C5d
++ **2nd generation Intel Xeon Scalable processors \(Cascade Lake 8275CL\)**: Larger C5 and C5d
++ **3rd generation Intel Xeon Scalable processors \(Ice Lake 8375C\)**: C6i
+
+For more information, see [Amazon EC2 Instance Types](https://aws.amazon.com/ec2/instance-types/)\.
 
 ## Instance performance<a name="compute-performance"></a>
 
@@ -135,11 +146,14 @@ The following is a summary of network performance for compute optimized instance
 | c4\.8xlarge | 10 Gbps | [Intel 82599 VF](sriov-networking.md) | 
 | c5\.9xlarge \| c5a\.8xlarge \| c5ad\.8xlarge \| c5d\.9xlarge | 10 Gbps | [ENA](enhanced-networking-ena.md) | 
 | c5\.12xlarge \| c5a\.12xlarge \| c5ad\.12xlarge \| c5d\.12xlarge  | 12 Gbps | [ENA](enhanced-networking-ena.md) | 
-|  c6a\.4xlarge and smaller \| c6i\.4xlarge and smaller  | Up to 12\.5 Gbps † | [ENA](enhanced-networking-ena.md) | 
+|  c6a\.4xlarge and smaller \| c6i\.4xlarge and smaller \| c7g\.xlarge and smaller | Up to 12\.5 Gbps † | [ENA](enhanced-networking-ena.md) | 
 | c6a\.8xlarge \| c6i\.8xlarge  | 12\.5 Gbps | [ENA](enhanced-networking-ena.md) | 
+| c7g\.8xlarge | 15 Gbps |  | 
 | c6a\.12xlarge c6i\.12xlarge  | 18\.75 Gbps | [ENA](enhanced-networking-ena.md) | 
+| c7g\.12xlarge | 22\.5 Gbps | [ENA](enhanced-networking-ena.md) | 
 | c5n\.4xlarge and smaller  | Up to 25 Gbps † | [ENA](enhanced-networking-ena.md) | 
 | c5\.18xlarge \| c5\.24xlarge \| c5\.metal \| c5d\.18xlarge \| c5d\.24xlarge \| c5d\.metal \| c6a\.16xlarge \| c6i\.16xlarge  | 25 Gbps | [ENA](enhanced-networking-ena.md) | 
+|  | 30 Gbps | [ENA](enhanced-networking-ena.md) | 
 | c6a\.24xlarge \| c6i\.24xlarge  | 37\.5 Gbps | [ENA](enhanced-networking-ena.md) | 
 | c5n\.9xlarge \| c6a\.32xlarge \| c6a\.48xlarge \| c6a\.metal \| c6i\.32xlarge \| c6i\.metal  | 50 Gbps | [ENA](enhanced-networking-ena.md) | 
 | c5n\.18xlarge \| c5n\.metal  | 100 Gbps | [ENA](enhanced-networking-ena.md) | 
@@ -233,8 +247,6 @@ For more information, see the following:
 + [Placement groups](placement-groups.md)
 
 ## Release notes<a name="compute-instance-release-notes"></a>
-+ C5 and C5d instances feature a 3\.1 GHz Intel Xeon Platinum 8000 series processor from either the first generation \(Skylake\-SP\) or second generation \(Cascade Lake\)\.
-+ C5a and C5ad instances feature a second\-generation AMD EPYC processor \(Rome\) running at frequencies as high as 3\.3\. GHz\.
 + C4 instances and instances built on the [Nitro System](instance-types.md#ec2-nitro-instances) require 64\-bit EBS\-backed HVM AMIs\. They have high\-memory and require a 64\-bit operating system to take advantage of that capacity\. HVM AMIs provide superior performance in comparison to paravirtual \(PV\) AMIs on high\-memory instance types\. In addition, you must use an HVM AMI to take advantage of enhanced networking\.
 + Instances built on the Nitro System have the following requirements:
   + [NVMe drivers](nvme-ebs-volumes.md) must be installed
